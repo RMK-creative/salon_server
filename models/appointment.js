@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-//const customer = require('./customer');
+const customerSchema = require('./customer').schema;
+const serviceSchema = require('./service').schema;
+
 
 const appointmentSchema = new Schema({
     date: {
@@ -11,10 +13,13 @@ const appointmentSchema = new Schema({
         type: String,
         required: true,
     },
-    name: [customer],   //{type: Schema.Types.ObjectId, ref:'Customer'} 
-    dogs: [{type: Schema.Types.ObjectId, ref:'customer'}],
-    title: [serviceSchema],
-    duration: [serviceSchema],
+    name: {customerSchema},   
+    dogs: {customerSchema},
+    title: {serviceSchema},
+    duration: {serviceSchema},
 });
 
-module.exports = mongoose.model("Appointment", appointmentSchema);
+const Appointment = mongoose.model("Appointment", appointmentSchema);
+
+module.exports.model = Appointment;
+module.exports.schema = appointmentSchema;
