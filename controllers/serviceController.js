@@ -24,6 +24,20 @@ module.exports = {
       console.log(error);
     }
   },
+  updateService: async (req, res) => {
+    const id = req.params.id;
+    try {
+      await Service.findOneAndUpdate(id, {
+        title: req.body.title,
+        description: req.body.description,
+        cost: req.body.cost,
+        duration: req.body.duration,
+      });
+      res.send(`Service ${id} updated`);
+    } catch (error) {
+      console.log(error);
+    }
+  },
   deleteService: (req, res) => {
     const id = req.params.id;
 
