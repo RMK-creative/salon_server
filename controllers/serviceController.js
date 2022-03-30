@@ -1,7 +1,16 @@
 const Service = require("../models/service");
-console.log(Service);
 
 module.exports = {
+  getAllServices: async (req, res, next) => {
+    Service.find()
+      .then((result) => {
+        console.log(result);
+        next();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   createService: async (req, res) => {
     try {
       await Service.create({
