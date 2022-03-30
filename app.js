@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const PORT = process.env.PORT || 3080;
-const authRouters = require('./routers/authRouters');
+const authRouters = require('./routes/authRouters');
 const cookieParser = require('cookie-parser');
 
 const Customer = require("./models/customer");
