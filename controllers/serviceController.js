@@ -15,4 +15,15 @@ module.exports = {
       console.log(error);
     }
   },
+  deleteService: (req, res) => {
+    const id = req.params.id;
+
+    Service.findByIdAndDelete(id)
+      .then((result) => {
+        res.json({ redirect: "/" });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };

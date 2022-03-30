@@ -30,6 +30,7 @@ app.post("/", (req, res) => {
 
 // Services Route
 app.use("/service", require("./routes/serviceRoutes"));
+app.use("/service/:id", require("./routes/serviceRoutes"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
