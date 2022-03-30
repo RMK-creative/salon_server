@@ -17,19 +17,20 @@ mongoose.connect(mongoDB);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.post("/", (req, res) => {
-  Customer.create({
-    name: "Szanzinski",
-    first_name: "Rosie",
-    email: "rosie@mail.com",
-  }).then(function (newCustomer) {
-    console.log("new customer added");
-    res.send(newCustomer);
-  });
-});
+// app.post("/", (req, res) => {
+//   Customer.create({
+//     name: "Szanzinski",
+//     first_name: "Rosie",
+//     email: "rosie@mail.com",
+//   }).then(function (newCustomer) {
+//     console.log("new customer added");
+//     res.send(newCustomer);
+//   });
+// });
 
 // Services Route
 app.use("/service", require("./routes/serviceRoutes"));
+app.use("/customer", require("./routes/customerRoutes"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+//const Schema = mongoose.Schema;
 
-const customerSchema = new Schema({
+const customerSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -14,15 +14,15 @@ const customerSchema = new Schema({
     type: String,
     required: false
   },
-  dogs: {
+  dogs: [{
     dogName: String,
-    // image: File,
+    //image: File,
     size: String,
     hair: String,
     info: String
-  }
+  }]
 });
 
-const Customer = mongoose.model("Customer", customerSchema);
-module.exports = Customer;
-module.exports.Schema = customerSchema;
+module.exports.schema = customerSchema;
+
+module.exports = mongoose.model("customer", customerSchema);
