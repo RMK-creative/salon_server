@@ -16,7 +16,7 @@ const customerSchema = new Schema({
   },
   dogs: {
     dogName: String,
-    image: File,
+    // image: File,
     size: String,
     hair: String,
     info: String
