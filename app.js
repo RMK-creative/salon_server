@@ -2,11 +2,20 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const PORT = process.env.PORT || 3080;
+const authRouters = require('./routers/authRouters');
+const cookieParser = require('cookie-parser');
 
 const Customer = require("./models/customer");
 const Service = require("./models/service");
 
 const app = express();
+
+// middleware
+app.use(express.static('public'));
+app.use(express.json());
+// body parser
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 require("dotenv").config();
 
@@ -17,20 +26,15 @@ mongoose.connect(mongoDB);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.post("/", (req, res) => {
-//   Customer.create({
-//     name: "Szanzinski",
-//     first_name: "Rosie",
-//     email: "rosie@mail.com",
-//   }).then(function (newCustomer) {
-//     console.log("new customer added");
-//     res.send(newCustomer);
-//   });
-// });
 
 // Services Route
 app.use("/service", require("./routes/serviceRoutes"));
+app.use("/service/:id", require("./routes/serviceRoutes"));
 app.use("/customer", require("./routes/customerRoutes"));
+
+//AuthRouters
+app.use(authRouters);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
