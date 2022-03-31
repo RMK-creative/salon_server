@@ -2,9 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const PORT = process.env.PORT || 3080;
+
 const authRouters = require("./routes/authRouters");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+
 
 const app = express();
 
@@ -33,6 +35,7 @@ app.use("/customer", require("./routes/customerRoutes"));
 
 //AuthRouters
 app.use(authRouters);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
