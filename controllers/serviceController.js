@@ -1,11 +1,10 @@
 const Service = require("../models/service");
 
 module.exports = {
-  getAllServices: async (req, res, next) => {
+  getAllServices: async (req, res) => {
     Service.find()
       .then((result) => {
-        console.log(result);
-        next();
+        res.send(result);
       })
       .catch((err) => {
         console.log(err);
@@ -19,7 +18,7 @@ module.exports = {
         cost: req.body.cost,
         duration: req.body.duration,
       });
-      res.redirect("/");
+      res.redirect("/service");
     } catch (error) {
       console.log(error);
     }
