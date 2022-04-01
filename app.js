@@ -32,6 +32,7 @@ app.use(express.json());
 app.use("/service", require("./routes/serviceRoutes"));
 app.use("/service/:id", require("./routes/serviceRoutes"));
 app.use("/customer", require("./routes/customerRoutes"));
+app.use("/event", require("./routes/eventRoutes"));
 
 //AuthRouters
 app.use(authRouters);

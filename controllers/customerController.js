@@ -53,12 +53,12 @@ module.exports = {
                 name: req.body.name,
                 email: req.body.email,
                 phone: req.body.phone,
-                dogs: {
-                    dogName: req.body.dogName,
-                    size: req.body.size,
-                    hair: req.body.hair,
-                    info: req.body.info
-                    }
+                dogs: [{
+                    dogName: req.body.dogs[0].dogName,
+                    size: req.body.dogs[0].size,
+                    hair: req.body.dogs[0].hair,
+                    info: req.body.dogs[0].info
+                }]
             });
             res.send(`Customer ${id} updated`)            
         } catch (error) {
