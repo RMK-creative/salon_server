@@ -7,7 +7,6 @@ const authRouters = require("./routes/authRouters");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
-
 const app = express();
 
 // middleware
@@ -28,6 +27,11 @@ mongoose.connect(mongoDB);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Heroku test route
+app.get("/", (req, res) => {
+  res.send("server is running ..");
+});
+
 // Services Route
 app.use("/service", require("./routes/serviceRoutes"));
 app.use("/service/:id", require("./routes/serviceRoutes"));
@@ -35,7 +39,6 @@ app.use("/customer", require("./routes/customerRoutes"));
 
 //AuthRouters
 app.use(authRouters);
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
