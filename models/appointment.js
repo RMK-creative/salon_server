@@ -13,10 +13,10 @@ const appointmentSchema = new Schema({
         type: String,
         required: true,
     },
-    name: {customerSchema},   
-    dogs: {customerSchema},
-    title: {serviceSchema},
-    duration: {serviceSchema},
+    customer: customerSchema.name,   
+    dogs: customerSchema.dogs,
+    service: serviceSchema.title,
+    duration: serviceSchema.duration,
 });
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);

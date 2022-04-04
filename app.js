@@ -9,6 +9,11 @@ const Customer = require("./models/customer");
 const Service = require("./models/service");
 
 const app = express();
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 
 // middleware
 app.use(express.static('public'));
@@ -16,6 +21,7 @@ app.use(express.json());
 // body parser
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors())
 
 require("dotenv").config();
 
