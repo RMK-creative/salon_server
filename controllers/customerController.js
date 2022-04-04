@@ -1,7 +1,4 @@
-const { find } = require("../models/customer");
 const Customer = require("../models/customer");
-
-
 
 module.exports = {
     getAllCustomer: async (req, res, next) => {
@@ -9,6 +6,7 @@ module.exports = {
         await Customer.find() 
         .then(result => {
             console.log(result)
+            res.send(result)
             next()})       
     } catch (error) {
         console.log(error)
@@ -20,6 +18,7 @@ module.exports = {
             await Customer.findById(req.params.id)
             .then(result => {
                 console.log(result)
+                res.send(result)
                 next()})            
         } catch (error) {
             console.log(error)            
