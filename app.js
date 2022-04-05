@@ -14,7 +14,8 @@ app.use(cors());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  req.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin, Authorization');
   next();
 });
 // body parser
