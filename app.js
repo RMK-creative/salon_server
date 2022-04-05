@@ -7,16 +7,10 @@ const authRouters = require("./routes/authRouters");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
-
 // middleware
 app.use(express.static("public"));
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 // body parser
 app.use(express.urlencoded({ extended: true }));
