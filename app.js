@@ -7,22 +7,21 @@ const authRouters = require("./routes/authRouters");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
-const app = express();
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 // middleware
 app.use(express.static("public"));
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // body parser
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors())
+app.use(cors());
 
 require("dotenv").config();
 
