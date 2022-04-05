@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3080;
 const authRouters = require("./routes/authRouters");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const app = express();
 
 // middleware
 app.use(express.static("public"));
@@ -21,7 +22,6 @@ app.use((req, res, next) => {
 // body parser
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors());
 
 require("dotenv").config();
 
