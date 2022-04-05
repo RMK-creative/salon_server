@@ -26,20 +26,23 @@ module.exports = {
     },
 
     createCustomer: async (req, res) => {
+        console.log(req.body)
     try {
         await Customer.create({ 
             name: req.body.name,
             email: req.body.email,
             phone: req.body.phone,
             dogs: [{
-                dogName: req.body.dogs[0].dogName,
-                size: req.body.dogs[0].size,
-                hair: req.body.dogs[0].hair,
-                info: req.body.dogs[0].info
+                dogName: req.body.dogs[0]?.dogName,
+                size: req.body.dogs[0]?.size,
+                hair: req.body.dogs[0]?.hair,
+                info: req.body.dogs[0]?.info
             }]            
         })
-        res.redirect("/");
-        
+        .then(response => {
+            console.log(response.data)
+            return res.send("Created")
+        })
     } catch (error) {
         console.log(error)        
     }
