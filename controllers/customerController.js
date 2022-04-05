@@ -38,6 +38,10 @@ module.exports = {
                 info: req.body.dogs[0].info
             }]            
         })
+        .then(response => {
+            console.log(response.data)
+            return res.send("Created"+`${response.data}`)
+        })
         res.redirect("/");
         
     } catch (error) {
