@@ -41,7 +41,7 @@ module.exports = {
         })
         .then(response => {
             console.log(response.data)
-            return res.send(`Created $ {response.data}`)
+            return res.send(`Created ${response.data}`)
         })
     } catch (error) {
         console.log(error)        
