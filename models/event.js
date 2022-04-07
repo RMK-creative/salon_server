@@ -5,7 +5,7 @@ const serviceSchema = require('./service').schema;
 const dateTimeSchema = mongoose.Schema({
    dateTime: {
       type: Date,
-      required: true,
+      //required: true,
      },
    timeZone: String,   
 });
@@ -17,7 +17,7 @@ const eventSchema = new mongoose.Schema({
     },
     description:{
       type: String,
-      required: true,
+      //required: true,
     },
     start:[dateTimeSchema],
     end:[dateTimeSchema],
@@ -35,7 +35,7 @@ const eventSchema = new mongoose.Schema({
    // title: [serviceSchema],
    // duration: [serviceSchema],
 });
-
+// 
 module.exports.schema = eventSchema;
 module.exports.schema = dateTimeSchema;
 module.exports = mongoose.model("event", eventSchema);

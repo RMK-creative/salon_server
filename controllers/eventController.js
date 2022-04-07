@@ -83,45 +83,47 @@ module.exports = {
     },
 
     createEvent: async (req, res) => {
+        //console.log(req)        
         const insertEvent = async (event) => {
             try {
-                let response = await calendar.Event.events.insert({
+                let res = await calendar.events.insert({
                     auth: auth,
                     calendarId: calendarId,
                     resource: event
                 });
-            console.log(response);
-                if (response['status'] == 200 && response['statusText'] === 'OK') {
+            console.log(res);
+                if (res['status'] == 200 && res['statusText'] === 'OK') {
                     return 1;
                 } else {
-                    return 2;
+                    return 0;
                 }
             } catch (error) {
                 console.log(`Error at insertEvent --> ${error}`);
                 return 0;
             }        
-        };
+         };
         let dateTime = dateTimeForCalander();
 
-        // Event for Google Calendar
+        // // Event for Google Calendar
         let event = {
-                // start: req.body.start,
-                // end: req.body.end,
-                // name: [customerSchema],
-                // dogs: [customerSchema],
-                // title: [serviceSchema],
-                // duration: [serviceSchema],
+         
+        //         // start: req.body.start,
+        //         // end: req.body.end,
+        //         // name: [customerSchema],
+        //         // dogs: [customerSchema],
+        //         // title: [serviceSchema],
+        //         // duration: [serviceSchema],
             summary: req.body.summary,
             description: req.body.description,
             start: [{
                 dateTime: req.body.start[0].dateTime,
-                timeZone: req.body.start[0].timeZone
+                timeZone: req.body.start[0].dateTime
             }],
             end: [{
-                dateTime: req.body.end[0].dateTime,
+                dateTime: req.body.start[0].dateTime,
                 timeZone: req.body.end[0].timeZone
             }]
-        };
+         };
         insertEvent(event)
             .then((res) => {
                 console.log(res);
@@ -131,7 +133,7 @@ module.exports = {
             });
 
 
-
+     },
 
 
 
@@ -163,4 +165,4 @@ module.exports = {
     //         console.log(error);
     //     }
     // }
-}}
+}

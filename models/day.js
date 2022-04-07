@@ -1,14 +1,20 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const slotsSchema = require('./slots').schema
+//const Schema = mongoose.Schema;
 
-const daySchema = new Schema({
+
+// const slotSchema = mongoose.Schema({
+//     //minLength: 15*60*60,
+//     //multiplier: Number,
+//     isAvailable: Boolean,
+//     // reservation: {
+//     //     required: false,
+//     //     type: reservation
+//     // }
+// });
+const daySchema = new mongoose.Schema({
     date: Date,
-    slots: [slotsSchema]
-    
+    isAvailable: Boolean    
 });
-
-const Day = mongoose.model('Day', daySchema);
-
-module.exports = Day;
-module.exports.Schema = daySchema;
+// module.exports.schema = slotSchema;
+module.exports.schema = daySchema;
+module.exports = mongoose.model("day", daySchema);
