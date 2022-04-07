@@ -50,18 +50,23 @@ module.exports = {
 
     updateCustomer: async (req, res) => {
         const id = req.params.id;
+        console.log(req.body)
         try {
-            await Customer.findOneAndUpdate(id, {
-                name: req.body.name,
-                email: req.body.email,
-                phone: req.body.phone,
-                dogs: {
-                    dogName: req.body.dogName,
-                    size: req.body.size,
-                    hair: req.body.hair,
-                    info: req.body.info
-                    }
-            });
+            const updateCustomer =
+            await Customer.findOneAndUpdate({_id:id}, {
+                ...req.body
+                // name: req.body.name,
+                // email: req.body.email,
+                // phone: req.body.phone,
+                // dogs: [{
+                //     dogName: req.body.dogName,
+                //     size: req.body.size,
+                //     hair: req.body.hair,
+                //     info: req.body.info
+                //     }]
+            },
+                {new: true});
+                console.log(updateCustomer)
             res.send(`Customer ${id} updated`)            
         } catch (error) {
             console.log(error);            
