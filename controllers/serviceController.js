@@ -15,7 +15,7 @@ module.exports = {
       await Service.findById(req.params.id).then((result) => {
         console.log(result);
         res.send(result);
-        next();
+        // next();
       });
     } catch (error) {
       console.log(error);
