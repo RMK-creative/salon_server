@@ -4,7 +4,8 @@ module.exports = {
   getAllDay: async (req, res, next) => {
     try {
       await Day.find().then((result) => {
-        console.log(result);
+        console.log(result)
+        res.send(result)
         next();
       });
     } catch (error) {
