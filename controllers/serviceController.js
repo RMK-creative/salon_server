@@ -2,7 +2,7 @@ const Service = require("../models/service");
 
 module.exports = {
   getAllServices: async (req, res) => {
-    Service.find().populate("service")
+    Service.find()
       .then((result) => {
         res.send(result);
       })
