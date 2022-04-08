@@ -18,17 +18,20 @@ module.exports = {
       await Day.create({
         date: req.body.date,
         isAvailable: req.body.isAvailable,
-      });
-      res.redirect("/");
-    } catch (error) {
-      console.log(error);
-    }
-  },
+      })
+      res.json({
+        message: "Day created successfully",
+        success: true        
+    })
+} catch (error) {
+    console.log(error);
+}
+},
 
   updateDay: async (req, res) => {
     const id = req.params.id;
     try {
-      await Day.findOneAndUpdate(id, {
+      await Day.findOneAndUpdate({_id:id}, {
         date: req.body.date,
         isAvailable: req.body.isAvailable,
       });
@@ -39,10 +42,12 @@ module.exports = {
   },
 
   deleteDay: async (req, res, next) => {
-    const _id = req.params.id;
+    const id = req.params.id;
     try {
-      await Day.findOneAndDelete({ _id }).then((result) => {
-        console.log(result);
+      await Day.findOneAndDelete({ _id:id })
+      .then((result) => {
+        console.log(result)
+        res.send(`Day ${id} deleted`)
         next();
       });
     } catch (error) {
