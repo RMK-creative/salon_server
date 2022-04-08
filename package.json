@@ -1,4 +1,26 @@
 {
+  "name": "salon_server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "engines": {
+    "node": "14.17.0",
+    "npm": "7.19.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RMK-creative/salon_server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RMK-creative/salon_server/issues"
+  },
+  "homepage": "https://github.com/RMK-creative/salon_server#readme",
+  "description": "",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
