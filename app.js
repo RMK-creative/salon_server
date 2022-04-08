@@ -32,7 +32,12 @@ app.use(express.json());
 app.use("/service", require("./routes/serviceRoutes"));
 app.use("/service/:id", require("./routes/serviceRoutes"));
 app.use("/customer", require("./routes/customerRoutes"));
+app.use("/customer/:id", require("./routes/customerRoutes"));
 app.use("/event", require("./routes/eventRoutes"));
+app.use("/appointment", require("./routes/appointmentRoutes"));
+app.use("/appointment/:id", require("./routes/appointmentRoutes"));
+app.use("/day", require("./routes/dayRoutes"));
+app.use("/time", require("./routes/timeRoutes"));
 
 //AuthRouters
 app.use(authRouters);
