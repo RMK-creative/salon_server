@@ -65,18 +65,16 @@ module.exports = {
       },
 
     deleteCustomer: async (req, res, next) => {
-        const _id = req.params.id;
+        const id = req.params.id;
         try {
-            await Customer.findOneAndDelete({ _id })
+            await Customer.findOneAndDelete({_id:id})
                 .then(result => {
                     console.log(result)
+                    res.send(`Customer ${id} deleted`)
                     next()})                       
         } catch (error) {
             console.log(error);
         }
-    }  
-    
+    }      
 
 }
-
-    

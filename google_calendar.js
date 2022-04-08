@@ -1,5 +1,10 @@
 const {google} = require('googleapis');
 require('dotenv').config();
+// const mongoose = require("mongoose");
+
+//Connect with MongoDB
+// const mongoDB = process.env.DB_URI;
+// mongoose.connect(mongoDB);
 
 // Provide the required configuration
 const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
@@ -65,7 +70,7 @@ const insertEvent = async (event) => {
             calendarId: calendarId,
             resource: event
         });
-    //console.log(response);
+    console.log(response);
         if (response['status'] == 200 && response['statusText'] === 'OK') {
             return 1;
         } else {
@@ -81,8 +86,8 @@ let dateTime = dateTimeForCalander();
 
 // Event for Google Calendar
 let event = {
-    'summary': `New TEST`,
-    'description': `Description TEST.`,
+    'summary': `New TEST with MongoDB 3`,
+    'description': `MongoDB TEST.`,
     'start': {
         'dateTime': dateTime['start'],
         'timeZone': 'Europe/Berlin'
@@ -121,16 +126,16 @@ const getEvents = async (dateTimeStart, dateTimeEnd) => {
     }
 };
 
-// let start = '2022-03-31T00:00:00.000';
-// let end = '2022-03-31T00:00:00.000';
+let start = '2022-04-05T00:00:00.000';
+let end = '2022-04-05T00:00:00.000';
 
-// getEvents(start, end)
-//     .then((res) => {
-//         console.log(res);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     });
+getEvents(start, end)
+    .then((res) => {
+        console.log(res);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 // Delete an event from eventID
 // const deleteEvent = async (eventId) => {
@@ -153,7 +158,7 @@ const getEvents = async (dateTimeStart, dateTimeEnd) => {
 //     }
 // };
 
-// let eventId = 'hkkdmeseuhhpagc862rfg6nvq4';
+// let eventId = 'n5769a49ov7mc2uvn51p30of2c';
 
 // deleteEvent(eventId)
 //     .then((res) => {
