@@ -18,7 +18,7 @@ const dogSchema = new Schema({
 const appointmentSchema = new Schema({
     day: {
         date: {
-            type: String,
+            type: Date,
             required: true
         },
         isAvailable: {
