@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 //     // }
 // });
 const daySchema = new mongoose.Schema({
-    date: Date,
+    date: String,
     isAvailable: Boolean    
 });
 // module.exports.schema = slotSchema;
