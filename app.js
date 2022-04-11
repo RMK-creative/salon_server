@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const app = express();
 
-const domainsFromEnv = process.env.CORS_DOMAINS || "";
+const domainsFromEnv = process.env.CORS_DOMAINS || "http://localhost:3080/";
 
 const whitelist = domainsFromEnv.split(",").map((item) => item.trim());
 
@@ -27,6 +27,7 @@ const corsOptions = {
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cors(corsOptions));
+// app.use(cors());
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
