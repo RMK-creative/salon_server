@@ -10,6 +10,17 @@ module.exports = {
         console.log(err);
       });
   },
+  getIdService: async (req, res, next) => {
+    try {
+      await Service.findById(req.params.id).then((result) => {
+        console.log(result);
+        res.send(result);
+        // next();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
   createService: async (req, res) => {
     try {
       await Service.create({

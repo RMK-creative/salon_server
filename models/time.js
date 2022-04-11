@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const timeSchema = new mongoose.Schema({
     startTime: String,
-    isAvailable: Boolean    
+    timeAvailable: Boolean    
 });
 
 

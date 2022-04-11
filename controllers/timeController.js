@@ -4,7 +4,8 @@ module.exports = {
   getAllTime: async (req, res, next) => {
     try {
       await Time.find().then((result) => {
-        console.log(result);
+        console.log(result)
+        res.send(result)
         next();
       });
     } catch (error) {
@@ -16,20 +17,23 @@ module.exports = {
     try {
       await Time.create({
         startTime: req.body.startTime,
-        isAvailable: req.body.isAvailable,
-      });
-      res.redirect("/");
-    } catch (error) {
-      console.log(error);
-    }
-  },
+        timeAvailable: req.body.timeAvailable,
+      })
+      res.json({
+        message: "Time created successfully",
+        success: true        
+    })
+  } catch (error) {
+    console.log(error);
+}
+},
 
   updateTime: async (req, res) => {
     const id = req.params.id;
     try {
-      await Time.findOneAndUpdate(id, {
+      await Time.findOneAndUpdate({_id:id}, {
         startTime: req.body.startTime,
-        isAvailable: req.body.isAvailable,
+        timeAvailable: req.body.timeAvailable,
       });
       res.send(`Time ${id} updated`);
     } catch (error) {
@@ -38,10 +42,11 @@ module.exports = {
   },
 
   deleteTime: async (req, res, next) => {
-    const _id = req.params.id;
+    const id = req.params.id;
     try {
-      await Time.findOneAndDelete({ _id }).then((result) => {
-        console.log(result);
+      await Time.findOneAndDelete({_id:id}).then((result) => {
+        console.log(result)
+        res.send(`Time ${id} deleted`)
         next();
       });
     } catch (error) {
