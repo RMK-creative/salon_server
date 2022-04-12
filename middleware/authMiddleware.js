@@ -31,7 +31,7 @@ const checkUser = (req, res, next) => {
             } else {
                 console.log(decodedToken);
                 let user = await User.findById(decodedToken.id);
-                res.locals.user = user; //pass found user to the view
+                res.send(user)
                 next();
             }
         })
