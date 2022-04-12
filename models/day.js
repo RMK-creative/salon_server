@@ -11,10 +11,20 @@ const mongoose = require('mongoose');
 //     //     type: reservation
 //     // }
 // });
+
+const timeSchema = new mongoose.Schema({
+    startTime: String,
+    timeAvailable: Boolean
+})
+
+
 const daySchema = new mongoose.Schema({
     date: Date,
-    isAvailable: Boolean    
+    isAvailable: Boolean,
+    time: [timeSchema]
+    
 });
 // module.exports.schema = slotSchema;
+module.exports.schema = timeSchema;
 module.exports.schema = daySchema;
 module.exports = mongoose.model("day", daySchema);
